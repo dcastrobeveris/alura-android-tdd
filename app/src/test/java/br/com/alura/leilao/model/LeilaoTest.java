@@ -30,9 +30,9 @@ public class LeilaoTest {
         // Delta = a diferença entre os valores com ponto flutuante e se ele for maior,
         // significa que os valores são equivalentes.
 
-        double maiorLanceDevolvidoDoConsole = console.getMaiorLance();
+        double maiorLanceDevolvido = console.getMaiorLance();
 
-        Assert.assertEquals(200.0, maiorLanceDevolvidoDoConsole, 0.0001);
+        Assert.assertEquals(200.0, maiorLanceDevolvido, 0.0001);
     }
 
     @Test
@@ -41,9 +41,9 @@ public class LeilaoTest {
         computador.propoe(new Lance(new Usuario("Sofia"), 100.0));
         computador.propoe(new Lance(new Usuario("Ana Laura"), 200.0));
 
-        double maiorLanceDevolvidoDoComputador = computador.getMaiorLance();
+        double maiorLanceDevolvido = computador.getMaiorLance();
 
-        Assert.assertEquals(200.0, maiorLanceDevolvidoDoComputador, 0.0001);
+        Assert.assertEquals(200.0, maiorLanceDevolvido, 0.0001);
     }
 
     @Test
@@ -53,9 +53,45 @@ public class LeilaoTest {
         carro.propoe(new Lance(new Usuario("Sofia"), 10000.0));
         carro.propoe(new Lance(new Usuario("Ana Laura"), 9000.0));
 
-        double maiorLanceDevolvidoDoCarro = carro.getMaiorLance();
+        double maiorLanceDevolvido = carro.getMaiorLance();
 
-        Assert.assertEquals(10000.0, maiorLanceDevolvidoDoCarro, 0.0001);
+        Assert.assertEquals(10000.0, maiorLanceDevolvido, 0.0001);
+    }
+
+    @Test
+    public void deve_DevolveMenorLance_QuandoRecebeApenasUmLance(){
+        Leilao console = new Leilao("Console");
+        console.propoe(new Lance(new Usuario("Diego"), 200.0));
+
+        // Delta = a diferença entre os valores com ponto flutuante e se ele for maior,
+        // significa que os valores são equivalentes.
+
+        double menorLanceDevolvido = console.getMenorLance();
+
+        Assert.assertEquals(200.0, menorLanceDevolvido, 0.0001);
+    }
+
+    @Test
+    public void deve_DevolveMenorLance_QuandoRecebeMaisDeUmLanceEmOrdemCrescente(){
+        Leilao computador = new Leilao("Computador");
+        computador.propoe(new Lance(new Usuario("Sofia"), 100.0));
+        computador.propoe(new Lance(new Usuario("Ana Laura"), 200.0));
+
+        double menorLanceDevolvido = computador.getMenorLance();
+
+        Assert.assertEquals(100.0, menorLanceDevolvido, 0.0001);
+    }
+
+    @Test
+    public void deve_DevolveMenorLance_QuandoRecebeMaisDeUmLanceEmOrdemDecrescente(){
+
+        Leilao carro = new Leilao("Carro");
+        carro.propoe(new Lance(new Usuario("Sofia"), 10000.0));
+        carro.propoe(new Lance(new Usuario("Ana Laura"), 9000.0));
+
+        double menorLanceDevolvido = carro.getMenorLance();
+
+        Assert.assertEquals(9000.0, menorLanceDevolvido, 0.0001);
     }
 
 }
