@@ -8,7 +8,7 @@ import org.junit.Test;
 public class LeilaoTest {
 
     @Test
-    public void getDescricaoQuandoRecebeDescricaoDevolveDescricao() {
+    public void deve_DevolveDescricao_QuandoRecebeDescricao() {
         // Criar cenário de teste
         Leilao console = new Leilao("Console");
 
@@ -19,10 +19,11 @@ public class LeilaoTest {
         Assert.assertEquals("Console", descricaoDevolvida);
     }
 
-    //[nome do método] [Estado de teste] [resultado esperado]
+    //[nome do método] [estado de teste] [resultado esperado]
+    //[deve] [resultado esperado] [estado de teste]
 
     @Test
-    public void getMaiorLanceQuandoRecebeApenasUmLanceDevolvidoMaiorLance(){
+    public void deve_DevolveMaiorLance_QuandoRecebeApenasUmLance(){
         Leilao console = new Leilao("Console");
         console.propoe(new Lance(new Usuario("Diego"), 200.0));
 
@@ -35,7 +36,7 @@ public class LeilaoTest {
     }
 
     @Test
-    public void getMaiorLanceQuandoRecebeMaisDeUmLanceEmOrdemCrescenteDevolveMaiorLance(){
+    public void deve_DevolveMaiorLance_QuandoRecebeMaisDeUmLanceEmOrdemCrescente(){
         Leilao computador = new Leilao("Computador");
         computador.propoe(new Lance(new Usuario("Sofia"), 100.0));
         computador.propoe(new Lance(new Usuario("Ana Laura"), 200.0));
@@ -46,7 +47,7 @@ public class LeilaoTest {
     }
 
     @Test
-    public void getMaiorLanceQuandoRecebeMaisDeUmLanceEmOrdemDecrescenteDevolveMaiorLance(){
+    public void deve_DevolveMaiorLance_QuandoRecebeMaisDeUmLanceEmOrdemDecrescente(){
 
         Leilao carro = new Leilao("Carro");
         carro.propoe(new Lance(new Usuario("Sofia"), 10000.0));
