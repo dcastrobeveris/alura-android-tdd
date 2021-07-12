@@ -3,6 +3,10 @@ package br.com.alura.leilao.model;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+
 public class LeilaoTest {
 
     private final Leilao CONSOLE = new Leilao("Console");
@@ -14,7 +18,7 @@ public class LeilaoTest {
         String descricaoDevolvida = CONSOLE.getDescricao();
 
         // Testar resultado esperado
-        Assert.assertEquals("Console", descricaoDevolvida);
+        assertEquals("Console", descricaoDevolvida);
     }
 
     //[nome do método] [estado de teste] [resultado esperado]
@@ -29,7 +33,7 @@ public class LeilaoTest {
 
         double maiorLanceDevolvido = CONSOLE.getMaiorLance();
 
-        Assert.assertEquals(200.0, maiorLanceDevolvido, 0.0001);
+        assertEquals(200.0, maiorLanceDevolvido, 0.0001);
     }
 
     @Test
@@ -39,7 +43,7 @@ public class LeilaoTest {
 
         double maiorLanceDevolvido = CONSOLE.getMaiorLance();
 
-        Assert.assertEquals(200.0, maiorLanceDevolvido, 0.0001);
+        assertEquals(200.0, maiorLanceDevolvido, 0.0001);
     }
 
     @Test
@@ -49,7 +53,7 @@ public class LeilaoTest {
 
         double maiorLanceDevolvido = CONSOLE.getMaiorLance();
 
-        Assert.assertEquals(10000.0, maiorLanceDevolvido, 0.0001);
+        assertEquals(10000.0, maiorLanceDevolvido, 0.0001);
     }
 
     @Test
@@ -61,7 +65,7 @@ public class LeilaoTest {
 
         double menorLanceDevolvido = CONSOLE.getMenorLance();
 
-        Assert.assertEquals(200.0, menorLanceDevolvido, 0.0001);
+        assertEquals(200.0, menorLanceDevolvido, 0.0001);
     }
 
     @Test
@@ -71,7 +75,7 @@ public class LeilaoTest {
 
         double menorLanceDevolvido = CONSOLE.getMenorLance();
 
-        Assert.assertEquals(100.0, menorLanceDevolvido, 0.0001);
+        assertEquals(100.0, menorLanceDevolvido, 0.0001);
     }
 
     @Test
@@ -81,7 +85,19 @@ public class LeilaoTest {
 
         double menorLanceDevolvido = CONSOLE.getMenorLance();
 
-        Assert.assertEquals(9000.0, menorLanceDevolvido, 0.0001);
+        assertEquals(9000.0, menorLanceDevolvido, 0.0001);
+    }
+
+    @Test
+    public void deve_DevolverTresMaioresLances_QuandoRecebeExatosTresLances(){
+        CONSOLE.propoe(new Lance(DIEGO, 200.0));
+        CONSOLE.propoe(new Lance(new Usuario("Ana"), 300.0));
+        CONSOLE.propoe(new Lance(DIEGO, 400.0));
+
+        // Test Driven Development
+        List<Lance> tresMaioresLancesDevolvidos = CONSOLE.tresMaioresLances();
+
+        assertEquals(3, tresMaioresLancesDevolvidos.size());
     }
 
 }
