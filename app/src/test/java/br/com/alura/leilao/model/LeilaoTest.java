@@ -168,4 +168,14 @@ public class LeilaoTest {
         assertEquals(1, quantidadeLancesDevolvida);
     }
 
+    @Test
+    public void naoDeve_AdicionarLance_QuandoForOMesmoUsuarioDoUltimoLance(){
+        CONSOLE.propoe(new Lance(DIEGO, 500.0));
+        CONSOLE.propoe(new Lance(DIEGO, 600.0));
+
+        int quantidadeLancesDevolvida = CONSOLE.quantidadeLances();
+
+        assertEquals(1, quantidadeLancesDevolvida);
+    }
+
 }
