@@ -19,7 +19,7 @@ public class LeilaoTest {
     public static final double DELTA = 0.0001;
     private final Leilao CONSOLE = new Leilao("Console");
     private final Usuario DIEGO = new Usuario("Diego");
-    
+
     @Test
     public void deve_DevolveDescricao_QuandoRecebeDescricao() {
         // Executar ação esperada
