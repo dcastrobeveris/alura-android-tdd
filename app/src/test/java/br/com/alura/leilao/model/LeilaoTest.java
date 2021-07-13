@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class LeilaoTest {
 
@@ -161,11 +162,12 @@ public class LeilaoTest {
     @Test
     public void naoDeve_AdicionarLance_QuandoForMenorQueOMaiorLance(){
         CONSOLE.propoe(new Lance(DIEGO, 500.0));
-        CONSOLE.propoe(new Lance(new Usuario("Ana"), 400.0));
-
-        int quantidadeLancesDevolvida = CONSOLE.quantidadeLances();
-
-        assertEquals(1, quantidadeLancesDevolvida);
+        try {
+            CONSOLE.propoe(new Lance(new Usuario("Ana"), 400.0));
+            fail("Era esperada uma RuntimeException");
+        } catch (RuntimeException exception) {
+            // teste passou
+        }
     }
 
     @Test
